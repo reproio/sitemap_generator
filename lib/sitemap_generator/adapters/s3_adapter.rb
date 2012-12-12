@@ -6,6 +6,7 @@ module SitemapGenerator
     def initialize(opts = {})
       @aws_access_key_id = opts[:aws_access_key_id] || ENV['AWS_ACCESS_KEY_ID']
       @aws_secret_access_key = opts[:aws_secret_access_key] || ENV['AWS_SECRET_ACCESS_KEY']
+      @aws_region = opts[:aws_region] || ENV['AWS_REGION']
       @fog_provider = opts[:fog_provider] || ENV['FOG_PROVIDER']
       @fog_directory = opts[:fog_directory] || ENV['FOG_DIRECTORY']
     end
@@ -17,7 +18,8 @@ module SitemapGenerator
       credentials = { 
         :aws_access_key_id     => @aws_access_key_id,
         :aws_secret_access_key => @aws_secret_access_key,
-        :provider              => @fog_provider,
+        :region                => @aws_region,
+        :provider              => @fog_provider
       }
 
       storage   = Fog::Storage.new(credentials)
