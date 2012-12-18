@@ -1,6 +1,7 @@
 .DS_Store
 *.swp
 pkg
+public/*
 spec/mock_app_gem/vendor/**/*
 spec/mock_app_plugin/vendor/**/*
 spec/mock_rails3_gem/vendor/**/*
